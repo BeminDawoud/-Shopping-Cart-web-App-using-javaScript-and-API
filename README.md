@@ -3,7 +3,7 @@
 This project is a simple shopping cart web application developed as the final project for a five-day intensive JavaScript course at the ITI institution. The web app allows users to browse a list of products, add items to their cart, adjust quantities, and view the total price of their selected items.
 
 ## Features
- -Browse a list of products fetched from an external API (https://fakestoreapi.com/products).
+- Browse a list of products fetched from an external API (https://fakestoreapi.com/products).
 - Add products to the cart with a single click.
 - Adjust the quantity of items in the cart using plus and minus buttons.
 - View the total price of items in the cart.
