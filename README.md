@@ -8,6 +8,7 @@ This project is a simple shopping cart web application developed as the final pr
 - Adjust the quantity of items in the cart using plus and minus buttons.
 - View the total price of items in the cart.
 - Cart data persists across sessions using local storage.
+- simple and beautifully designed registeration and log in pages.
 
 ## Usage
 * Clone the repository to your local machine.
