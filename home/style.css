@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Honk&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Caveat', cursive;
+    font-size: x-large;
+    background: url(../img/background.jpg);
+    background-attachment: fixed;
+
+
+}
+.container{
+    width: 70%;
+    margin: auto;
+    max-width: 90vw;
+    text-align: center;
+    padding-top: 10px;
+    transition: transform .5s;
+}
+
+nav {
+    /*background-color: #ffffff;*/
+    border-radius: 25px;
+    opacity: 0.8;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Caveat', cursive;
+    font-size: xx-large;
+    transition: transform 0.3s ease;
+    
+}
+
+nav ul li a:hover {
+    
+    transform: scale(1.2);
+}
+
+
+nav ul li a:active {
+     transform: scale(0.95);
+}
+
+
+svg{
+    width: 30px;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.icon-cart{
+    position: relative;
+}
+.icon-cart span{
+    position: absolute;
+    background-color: rgb(200, 86, 34);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 50%;
+    right: -20px;
+}
+.title{
+    font-size: xx-large;
+}
+.listProduct .item img{
+    width: 90%;
+    filter: none;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-top: auto;
+}
+.listProduct{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    
+
+}
+.listProduct .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align items vertically with space between */
+    border: 3px solid #280808; /* Add a border with a color other than white */
+    border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+    background-color: #ffffff;
+    box-shadow:  0 0 20px #2e2422;
+    transition: transform 0.3s ease;
+
+}
+
+.listProduct .item:hover {
+    transform: scale(1.1);
+
+}
+
+
+.listProduct .item button {
+    background-image: linear-gradient(to bottom, #009579, #007f67);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    margin-top: auto; /* Push the button to the bottom by pushing it to the end */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.listProduct .item button:hover {
+    background-image: linear-gradient(to bottom, #ff6347, #ff6347);
+}
+
+.listProduct .item button:active {
+    transform: scale(0.95);
+}
+
+
+
+.listProduct .item h2{
+    font-weight: 500;
+    font-size: large;
+}
+
+.listProduct .item .price{
+    letter-spacing: 1px;
+    margin-top: auto;
+    font-size: large;
+}
+
+/* cart */
+.cartTab{
+    width: 400px;
+    background-color: #ffffff;
+    color: #000000;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+    border: 3px solid #026018;
+    border-radius: 20px;
+}
+body.showCart .cartTab{
+    right: 0;
+}
+body.showCart .container{
+    transform: translateX(-250px);
+}
+.cartTab h1{
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+    text-align: center;
+    
+}
+.cartTab .btn {
+    display: flex; /* Use flexbox for button alignment */
+    justify-content: space-around; /* Distribute space evenly between buttons */
+    align-items: center;
+}
+
+.cartTab button {
+    background-color: #ff6347; 
+    color: #ffffff; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add transition for smoother hover effect */
+}
+
+.cartTab button:hover {
+    background-color: #ff473b; /* Darker color on hover */
+}
+
+
+.cartTab .close{
+    background-color: #eee;
+}
+.listCart .item img{
+    width: 100%;
+}
+.listCart .item{
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid;
+    
+}
+
+.totalPrice{
+    font-size: large;
+}
+.listCart .quantity span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+    font-size: 20px; 
+    line-height: 25px; 
+    text-align: center; 
+}
+
+.listCart .quantity .minus:hover{
+    background-color: #ff473b;
+}
+
+.listCart .quantity .plus:hover {
+    background-color: #23be47;
+}
+
+.total-price
+{
+    text-align: center;
+}
+
+.listCart {
+    overflow: auto;
+}
+
+.listCart::-webkit-scrollbar {
+    width: 0;
+}
+
+@media only screen and (max-width: 992px) {
+    .listProduct{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* mobile */
+@media only screen and (max-width: 768px) {
+    .listProduct{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="../img/logo.png" alt="Logo" class="logo">
+        </div>
+        <form class="form" id="login" action="../home/index.html" method="get">
+            <h1 class="title">Log In</h1>
+            <div class="form-group">
+                <input type="email" class="form-input" id="email" autofocus placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-input" id="password" placeholder="Enter your Password">
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" id="rememberMe"> Remember Me</label>
+            </div>
+            <button class="form-button" type="submit">Log In</button>
+            <p class="form-text">
+                <a href="#" class="form-link">Forgot your password?</a>
+            </p>
+            <p class="form-text">
+                <a class="form-link" href="./signup.html" id="linkCreateAccount">Don't have an account? Create
+                    account</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="./login.js"> </script>
+</body>
+
+</html>
