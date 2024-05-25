@@ -176,5 +176,5 @@ const initApp = () => {
     }
   };
   
-  initApp();
+initApp();
 
