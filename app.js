@@ -6,6 +6,7 @@ let body = document.querySelector('body');
 let closeCart = document.querySelector('.close');
 let products = [];
 let cart = [];
+let cartQuantity = 0;
 
 /* these event listeneres are responsible for showing and hiding the cart */
 /* it cancels and reactivates the css of the cart */
@@ -77,10 +78,33 @@ const addToCart = (product_id) => {
     addCartToMemory();
 }
 
+// Helper function to set a cookie
+const setCookie = (name, value, days) => {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+// Helper function to get a cookie
+const getCookie = (name) => {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
 const addCartToMemory = () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-  };
+    const cartString = JSON.stringify(cart);
+    setCookie('cart', cartString, 7); // Store cart in a cookie for 7 days
+}
 
 
 // this function displays the items added in the shopping cart.
@@ -90,12 +114,18 @@ const addCartToHTML = () => {
     let totalPrice = 0;
     if (cart.length > 0) {
         cart.forEach(item => {
-            totalQuantity = totalQuantity + item.quantity;
+            totalQuantity += item.quantity;
             let newItem = document.createElement('div');
             newItem.classList.add('item');
             newItem.dataset.id = item.product_id;
             listCartHTML.appendChild(newItem);
+
             let product = products.find(p => p.id == item.product_id);
+            if (!product) {
+                console.error(`Product with ID ${item.product_id} not found`);
+                return;
+            }
+
             let itemTotalPrice = product.price * item.quantity;
             totalPrice += itemTotalPrice;
             newItem.innerHTML = `
@@ -160,21 +190,25 @@ const changeQuantityCart = (product_id, type) => {
 
 
 // fetching the products from API and adding them to the product array.
+
 const initApp = () => {
     fetch('https://fakestoreapi.com/products')
-      .then(response => response.json())
-      .then(data => {
-        products = data;
-        addDataToHTML();
-      })
-      .catch(error => console.error('Error fetching products:', error));
-  
-    // get data cart from memory
-    if (localStorage.getItem('cart')) {
-      cart = JSON.parse(localStorage.getItem('cart'));
-      addCartToHTML();
+        .then(response => response.json())
+        .then(data => {
+            products = data;
+            addDataToHTML();
+        })
+    .catch(error => console.error('Error fetching products:', error));
+    // get data cart from cookies
+    let cartCookie = getCookie('cart');
+    if (cartCookie) {
+        cart = JSON.parse(cartCookie);
+        addCartToHTML();
     }
-  };
-  
-initApp();
 
+    // Update cart quantity when the page loads
+    cartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+    iconCartSpan.innerText = cartQuantity;
+};
+
+initApp();
